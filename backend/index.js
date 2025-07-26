@@ -5,6 +5,7 @@ import connectDB from './src/config/db.js';
 
 
 import router from './src/routes/short_url.route.js';
+import { redirectShortUrl } from './src/controllers/short_url.controller.js';
 
 const app = express();
 dotenv.config();
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 });
 
 app.use("/api/create/", router);
+app.get("/:id", redirectShortUrl);
 
 
 connectDB();
